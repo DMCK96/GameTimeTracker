@@ -10,7 +10,13 @@ namespace GameTimeTracker.UI.Services;
 public class NotificationService
 {
     private readonly List<ToastNotificationWindow> _activeNotifications = new();
+    private readonly SettingsService _settingsService;
     private const int NotificationSpacing = 10;
+
+    public NotificationService(SettingsService settingsService)
+    {
+        _settingsService = settingsService;
+    }
 
     public void SendTestNotification(string title, string message)
     {
@@ -45,7 +51,19 @@ public class NotificationService
     {
         Application.Current.Dispatcher.Invoke(() =>
         {
-            var notification = new ToastNotificationWindow(title, message, icon, autoCloseDurationSeconds);
+            var settings = _settingsService.GetSettings();
+            
+            if (!settings.NotificationsEnabled)
+                return;
+            
+            var duration = settings.AutoDismissNotifications ? settings.AutoDismissDurationSeconds : 0;
+            var notification = new ToastNotificationWindow(
+                title, 
+                message, 
+                icon, 
+                duration,
+                settings.NotificationLocation,
+                settings.DismissHotkey);
             
             // Position notification considering other active notifications
             PositionNotification(notification);

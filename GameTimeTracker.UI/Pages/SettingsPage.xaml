@@ -15,6 +15,205 @@
                       Margin="0,0,0,20"
                       Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
             
+            <!-- Notification Settings Section -->
+            <ui:Card Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Notification Settings" 
+                              FontSize="20" 
+                              FontWeight="SemiBold"
+                              Margin="0,0,0,15"
+                              Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    
+                    <!-- Enable Notifications -->
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Enable Notifications" 
+                                      FontWeight="Medium"
+                                      Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                            <TextBlock Text="Show toast notifications for game events" 
+                                      FontSize="12"
+                                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                        </StackPanel>
+                        
+                        <ui:ToggleSwitch Grid.Column="1" 
+                                        x:Name="NotificationsEnabledToggle"
+                                        VerticalAlignment="Center"
+                                        Checked="NotificationsEnabledToggle_Changed"
+                                        Unchecked="NotificationsEnabledToggle_Changed"/>
+                    </Grid>
+                    
+                    <Separator Margin="0,0,0,15"/>
+                    
+                    <!-- Notification Location -->
+                    <StackPanel Margin="0,0,0,15">
+                        <TextBlock Text="Notification Location" 
+                                  FontWeight="Medium"
+                                  Margin="0,0,0,8"
+                                  Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                        <TextBlock Text="Choose which corner of the screen notifications appear" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                  Margin="0,0,0,8"/>
+                        <ComboBox x:Name="LocationComboBox" 
+                                 Width="300"
+                                 HorizontalAlignment="Left"
+                                 SelectionChanged="LocationComboBox_SelectionChanged">
+                            <ComboBoxItem Content="Top Left" Tag="TopLeft"/>
+                            <ComboBoxItem Content="Top Right" Tag="TopRight"/>
+                            <ComboBoxItem Content="Bottom Left" Tag="BottomLeft"/>
+                            <ComboBoxItem Content="Bottom Right" Tag="BottomRight"/>
+                        </ComboBox>
+                    </StackPanel>
+                    
+                    <Separator Margin="0,0,0,15"/>
+                    
+                    <!-- Auto Dismiss -->
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Auto Dismiss" 
+                                      FontWeight="Medium"
+                                      Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                            <TextBlock Text="Automatically close notifications after a delay" 
+                                      FontSize="12"
+                                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                        </StackPanel>
+                        
+                        <ui:ToggleSwitch Grid.Column="1" 
+                                        x:Name="AutoDismissToggle"
+                                        VerticalAlignment="Center"
+                                        Checked="AutoDismissToggle_Changed"
+                                        Unchecked="AutoDismissToggle_Changed"/>
+                    </Grid>
+                    
+                    <!-- Auto Dismiss Duration -->
+                    <StackPanel x:Name="AutoDismissDurationPanel" Margin="0,0,0,15">
+                        <TextBlock Text="Auto Dismiss Duration (seconds)" 
+                                  FontWeight="Medium"
+                                  Margin="0,0,0,8"
+                                  Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Slider x:Name="DurationSlider" 
+                                   Grid.Column="0"
+                                   Minimum="3" 
+                                   Maximum="30" 
+                                   Value="5"
+                                   TickFrequency="1"
+                                   IsSnapToTickEnabled="True"
+                                   Margin="0,0,10,0"
+                                   ValueChanged="DurationSlider_ValueChanged"/>
+                            
+                            <TextBlock Grid.Column="1" 
+                                      x:Name="DurationValueText"
+                                      Text="5s" 
+                                      FontWeight="Medium"
+                                      VerticalAlignment="Center"
+                                      MinWidth="40"
+                                      Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                        </Grid>
+                    </StackPanel>
+                    
+                    <Separator Margin="0,0,0,15"/>
+                    
+                    <!-- Dismiss Hotkey -->
+                    <StackPanel Margin="0,0,0,15">
+                        <TextBlock Text="Dismiss Hotkey" 
+                                  FontWeight="Medium"
+                                  Margin="0,0,0,8"
+                                  Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                        <TextBlock Text="Keyboard shortcut to dismiss notifications" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                  Margin="0,0,0,8"/>
+                        <ComboBox x:Name="HotkeyComboBox" 
+                                 Width="300"
+                                 HorizontalAlignment="Left"
+                                 SelectionChanged="HotkeyComboBox_SelectionChanged">
+                            <ComboBoxItem Content="Escape" Tag="Escape"/>
+                            <ComboBoxItem Content="Delete" Tag="Delete"/>
+                            <ComboBoxItem Content="Space" Tag="Space"/>
+                            <ComboBoxItem Content="Enter" Tag="Enter"/>
+                        </ComboBox>
+                    </StackPanel>
+                    
+                    <Separator Margin="0,0,0,15"/>
+                    
+                    <!-- Streak Settings -->
+                    <TextBlock Text="Streak Reminders" 
+                              FontWeight="Medium"
+                              Margin="0,0,0,8"
+                              Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock Text="Set times to receive daily reminders to maintain your streaks" 
+                              FontSize="12"
+                              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                              Margin="0,0,0,8"
+                              TextWrapping="Wrap"/>
+                    
+                    <StackPanel x:Name="ReminderTimesPanel" Margin="0,0,0,10">
+                        <!-- Reminder times will be added here dynamically -->
+                    </StackPanel>
+                    
+                    <ui:Button Content="Add Reminder Time" 
+                              Icon="{ui:SymbolIcon Add24}"
+                              Appearance="Secondary"
+                              Click="AddReminderTime_Click"
+                              Margin="0,0,0,15"/>
+                    
+                    <Separator Margin="0,0,0,15"/>
+                    
+                    <!-- Streak Minimum Game Time -->
+                    <StackPanel Margin="0,0,0,15">
+                        <TextBlock Text="Minimum Daily Play Time for Streaks" 
+                                  FontWeight="Medium"
+                                  Margin="0,0,0,8"
+                                  Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                        <TextBlock Text="How much time you need to play each day to count toward your streak" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                  Margin="0,0,0,8"
+                                  TextWrapping="Wrap"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Slider x:Name="MinGameTimeSlider" 
+                                   Grid.Column="0"
+                                   Minimum="5" 
+                                   Maximum="120" 
+                                   Value="30"
+                                   TickFrequency="5"
+                                   IsSnapToTickEnabled="True"
+                                   Margin="0,0,10,0"
+                                   ValueChanged="MinGameTimeSlider_ValueChanged"/>
+                            
+                            <TextBlock Grid.Column="1" 
+                                      x:Name="MinGameTimeValueText"
+                                      Text="30 min" 
+                                      FontWeight="Medium"
+                                      VerticalAlignment="Center"
+                                      MinWidth="60"
+                                      Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </ui:Card>
+            
             <!-- Notification Testing Section -->
             <ui:Card Margin="0,0,0,20">
                 <StackPanel>

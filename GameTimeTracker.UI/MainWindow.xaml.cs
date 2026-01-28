@@ -11,11 +11,14 @@ namespace GameTimeTracker.UI;
 public partial class MainWindow : FluentWindow
 {
     private readonly NotificationService _notificationService;
+    private readonly SettingsService _settingsService;
 
     public MainWindow()
     {
         InitializeComponent();
-        _notificationService = new NotificationService();
+        
+        _settingsService = new SettingsService();
+        _notificationService = new NotificationService(_settingsService);
         
         // Set up navigation
         NavigationView.SetServiceProvider(CreateServiceProvider());
@@ -34,6 +37,7 @@ public partial class MainWindow : FluentWindow
         
         // Register services
         services.AddSingleton(_notificationService);
+        services.AddSingleton(_settingsService);
         
         // Register pages
         services.AddSingleton<Pages.GameLibraryPage>();
@@ -42,5 +46,7 @@ public partial class MainWindow : FluentWindow
         return services.BuildServiceProvider();
     }
 }
+
+
 
 
