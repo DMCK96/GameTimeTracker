@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using GameTimeTracker.UI.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Wpf.Ui.Controls;
 
 namespace GameTimeTracker.UI;
@@ -15,22 +16,31 @@ public partial class MainWindow : FluentWindow
     {
         InitializeComponent();
         _notificationService = new NotificationService();
+        
+        // Set up navigation
+        NavigationView.SetServiceProvider(CreateServiceProvider());
+        NavigationView.Loaded += NavigationView_Loaded;
     }
 
-    private void TestStreakNotification_Click(object sender, RoutedEventArgs e)
+    private void NavigationView_Loaded(object sender, RoutedEventArgs e)
     {
-        _notificationService.SendStreakNotification("Elden Ring", 7);
+        // Navigate to Game Library page by default
+        NavigationView.Navigate(typeof(Pages.GameLibraryPage));
     }
 
-    private void TestReminderNotification_Click(object sender, RoutedEventArgs e)
+    private IServiceProvider CreateServiceProvider()
     {
-        _notificationService.SendDailyReminderNotification();
-    }
-
-    private void TestCustomNotification_Click(object sender, RoutedEventArgs e)
-    {
-        _notificationService.SendTestNotification(
-            "🎮 GameTimeTracker",
-            "This is a test notification! Everything is working correctly.");
+        var services = new ServiceCollection();
+        
+        // Register services
+        services.AddSingleton(_notificationService);
+        
+        // Register pages
+        services.AddSingleton<Pages.GameLibraryPage>();
+        services.AddSingleton<Pages.SettingsPage>();
+        
+        return services.BuildServiceProvider();
     }
 }
+
+

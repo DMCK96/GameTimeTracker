@@ -1,0 +1,68 @@
+<Page x:Class="GameTimeTracker.UI.Pages.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d"
+      Title="Settings">
+    
+    <ScrollViewer>
+        <StackPanel Margin="20">
+            <TextBlock Text="Settings" 
+                      FontSize="32" 
+                      FontWeight="Bold"
+                      Margin="0,0,0,20"/>
+            
+            <!-- Notification Testing Section -->
+            <ui:Card Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Notification Testing" 
+                              FontSize="20" 
+                              FontWeight="SemiBold"
+                              Margin="0,0,0,10"/>
+                    
+                    <TextBlock Text="Test the notification system with different notification types:" 
+                              Opacity="0.7"
+                              TextWrapping="Wrap"
+                              Margin="0,0,0,15"/>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <ui:Button Content="Test Streak Notification" 
+                                   Click="TestStreakNotification_Click"
+                                   Icon="{ui:SymbolIcon Trophy24}"
+                                   Appearance="Primary"
+                                   Margin="0,0,10,0"/>
+                        
+                        <ui:Button Content="Test Reminder" 
+                                   Click="TestReminderNotification_Click"
+                                   Icon="{ui:SymbolIcon Alert24}"
+                                   Margin="0,0,10,0"/>
+                        
+                        <ui:Button Content="Test Custom" 
+                                   Click="TestCustomNotification_Click"
+                                   Icon="{ui:SymbolIcon Mail24}"/>
+                    </StackPanel>
+                    
+                    <TextBlock Text="These are temporary test buttons for development purposes." 
+                              FontSize="12" 
+                              Opacity="0.5"
+                              Margin="0,5,0,0"/>
+                </StackPanel>
+            </ui:Card>
+            
+            <!-- Future Settings Section -->
+            <ui:Card>
+                <StackPanel>
+                    <TextBlock Text="Application Settings" 
+                              FontSize="20" 
+                              FontWeight="SemiBold"
+                              Margin="0,0,0,10"/>
+                    
+                    <TextBlock Text="More settings will be added here in future updates." 
+                              Opacity="0.7"/>
+                </StackPanel>
+            </ui:Card>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
