@@ -1,0 +1,70 @@
+﻿<ui:FluentWindow x:Class="GameTimeTracker.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:local="clr-namespace:GameTimeTracker.UI"
+        mc:Ignorable="d"
+        Title="GameTimeTracker" 
+        Height="600" 
+        Width="900"
+        WindowStartupLocation="CenterScreen"
+        ExtendsContentIntoTitleBar="True"
+        WindowBackdropType="Mica">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Bar -->
+        <ui:TitleBar Grid.Row="0" 
+                     Title="GameTimeTracker"
+                     Icon="pack://application:,,,/Resources/icon.ico"
+                     ShowMinimize="True"
+                     ShowMaximize="True"
+                     ShowClose="True"/>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="🎮 Game Time Tracker" 
+                          FontSize="32" 
+                          FontWeight="Bold"
+                          HorizontalAlignment="Center"/>
+                
+                <TextBlock Text="Track your gaming habits and maintain daily streaks!" 
+                          FontSize="16" 
+                          HorizontalAlignment="Center"
+                          Opacity="0.7"
+                          Margin="0,10,0,0"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <ui:Button Content="Test Streak Notification" 
+                               Click="TestStreakNotification_Click"
+                               Icon="{ui:SymbolIcon Trophy24}"
+                               Appearance="Primary"
+                               Margin="0,0,10,0"/>
+                    
+                    <ui:Button Content="Test Reminder Notification" 
+                               Click="TestReminderNotification_Click"
+                               Icon="{ui:SymbolIcon Alert24}"
+                               Margin="0,0,10,0"/>
+                    
+                    <ui:Button Content="Test Custom Notification" 
+                               Click="TestCustomNotification_Click"
+                               Icon="{ui:SymbolIcon Mail24}"/>
+                </StackPanel>
+
+                <TextBlock Text="Click any button above to test Windows toast notifications" 
+                          FontSize="12" 
+                          HorizontalAlignment="Center"
+                          Opacity="0.5"
+                          Margin="0,20,0,0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</ui:FluentWindow>
+
