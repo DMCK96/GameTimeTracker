@@ -69,11 +69,12 @@
                           Text="Notification Title"
                           FontSize="16"
                           FontWeight="SemiBold"
-                          TextWrapping="Wrap"/>
+                          TextWrapping="Wrap"
+                          Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 <TextBlock x:Name="MessageText"
                           Text="Notification message"
                           FontSize="14"
-                          Opacity="0.8"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                           TextWrapping="Wrap"
                           Margin="0,4,0,0"/>
             </StackPanel>

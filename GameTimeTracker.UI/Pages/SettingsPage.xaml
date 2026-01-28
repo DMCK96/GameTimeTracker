@@ -12,7 +12,8 @@
             <TextBlock Text="Settings" 
                       FontSize="32" 
                       FontWeight="Bold"
-                      Margin="0,0,0,20"/>
+                      Margin="0,0,0,20"
+                      Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
             
             <!-- Notification Testing Section -->
             <ui:Card Margin="0,0,0,20">
@@ -20,10 +21,11 @@
                     <TextBlock Text="Notification Testing" 
                               FontSize="20" 
                               FontWeight="SemiBold"
-                              Margin="0,0,0,10"/>
+                              Margin="0,0,0,10"
+                              Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                     
                     <TextBlock Text="Test the notification system with different notification types:" 
-                              Opacity="0.7"
+                              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                               TextWrapping="Wrap"
                               Margin="0,0,0,15"/>
                     
@@ -46,7 +48,7 @@
                     
                     <TextBlock Text="These are temporary test buttons for development purposes." 
                               FontSize="12" 
-                              Opacity="0.5"
+                              Foreground="{DynamicResource TextFillColorTertiaryBrush}"
                               Margin="0,5,0,0"/>
                 </StackPanel>
             </ui:Card>
@@ -57,10 +59,11 @@
                     <TextBlock Text="Application Settings" 
                               FontSize="20" 
                               FontWeight="SemiBold"
-                              Margin="0,0,0,10"/>
+                              Margin="0,0,0,10"
+                              Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                     
                     <TextBlock Text="More settings will be added here in future updates." 
-                              Opacity="0.7"/>
+                              Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
                 </StackPanel>
             </ui:Card>
         </StackPanel>
